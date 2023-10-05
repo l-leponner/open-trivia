@@ -1,20 +1,33 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar padding="1%">
+    <h1>{{title}}</h1>  
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Open Trivia</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    
+    <ion-list  class="loginSection">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]= "username" label="Votre pseudo" labelPlacement="floating" placeholder="Entrez votre pseudonyme"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select name="difficulties" [(ngModel)]="selectedDifficulty" label="Difficulté" placeholder="Choisir une difficulté">
+          <ion-select-option *ngFor="let difficulty of difficulties" value="{{difficulty}}">{{difficulty | titlecase}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-toggle [(ngModel)]="remember">Sauvegarder mes informations</ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="onStartButtonClicked(username, selectedDifficulty, remember)">Commencer</ion-button>
+      </ion-item>
+    </ion-list>
+
+    
 </ion-content>
